@@ -59,4 +59,4 @@ Project is: _in progress_
 Project inspired by Urban Dictionary and Wikipedia
 
 ## Contact
-Created by [CS157A Team 37](https://github.com/Dark-Everyday/CS-157A-Team-37-Repository) - feel free to contact us!
+Created by [CS157A Team 37](https://github.com/orgs/CS157A-Team-37/people) - feel free to contact us!
