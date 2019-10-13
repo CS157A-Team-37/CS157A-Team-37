@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize");
 const db = require("../database/db.js");
 
+//Create a user table. For now it is not working 
+
 var User = db.sequelize.define(
   "User",
   {
