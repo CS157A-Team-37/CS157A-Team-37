@@ -2,26 +2,27 @@ var express = require("express");
 var router = express.Router();
 
 const cors = require("cors");
-const Word = require("../models/Word");
+const Users = require("../models/User");
 
 router.use(cors());
 
-router.get("/words", function(req, res, next) {
-  Word.findAll()
-    .then(words => {
-      res.json(words);
+router.get("/users", function(req, res, next) {
+  Users.findAll()
+    .then(users => {
+      res.json(users);
     })
     .catch(err => {
       res.send("error: " + err);
     });
 });
 
-router.post("/words", function(req, res, next) {
-  if (!req.body.name || !req.body.syllables || !req.body.phoneticSpelling) {
+router.post("/users", function(req, res, next) {
+  if (!req.body.username || !req.body.email || !req.body.password) {
     res.status(400);
     res.json({ error: "Bad Data" });
-  } else {
-    Word.create(req.body)
+  } 
+  else {
+    Users.create(req.body)
       .then(data => {
         res.send(data);
       })

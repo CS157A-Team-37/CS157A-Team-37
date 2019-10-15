@@ -4,12 +4,14 @@ const db = require("../database/db.js");
 var Word = db.sequelize.define(
   "tbl_word",
   {
-    id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
+    name: {
+      type: Sequelize.STRING,
+      primaryKey: true
     },
-    word_name: {
+    syllables: {
+      type: Sequelize.STRING
+    },
+    phoneticSpelling: {
       type: Sequelize.STRING
     }
   },
