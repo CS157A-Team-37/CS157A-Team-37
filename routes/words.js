@@ -20,7 +20,8 @@ router.post("/words", function(req, res, next) {
   if (!req.body.name || !req.body.syllables || !req.body.phoneticSpelling) {
     res.status(400);
     res.json({ error: "Bad Data" });
-  } else {
+  } 
+  else {
     Word.create(req.body)
       .then(data => {
         res.send(data);
