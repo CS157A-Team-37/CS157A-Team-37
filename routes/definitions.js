@@ -7,7 +7,7 @@ const Definition = require("../models/Definition");
 router.use(cors());
 
 router.get("/definitions", function(req, res, next) {
-  Word.findAll()
+  Definition.findAll()
     .then(definitions => {
       res.json(definitions);
     })
@@ -22,7 +22,7 @@ router.post("/definitions", function(req, res, next) {
     res.json({ error: "Bad Data" });
   } 
   else {
-    Word.create(req.body)
+    Definition.create(req.body)
       .then(data => {
         res.send(data);
       })

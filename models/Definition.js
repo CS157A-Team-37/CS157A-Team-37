@@ -7,7 +7,6 @@ var Definition = db.sequelize.define(
     id: {
       type: Sequelize.STRING,
       primaryKey: true,
-      autoIncrement: true
     },
     numberOfUpvotes: {
       type: Sequelize.INTEGER
@@ -26,4 +25,4 @@ var Definition = db.sequelize.define(
 
 Definition.sync({ alter: true });
 
-module.exports = definition;
+module.exports = Definition;
