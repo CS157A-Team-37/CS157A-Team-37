@@ -7,6 +7,7 @@ var words = require("./routes/words");
 var definitions = require("./routes/definitions");
 var users = require("./routes/users");
 var categories = require("./routes/categories")
+// var madeDefinitions = require("./routes/madeDefinitions")
 
 var cors = require("cors");
 
@@ -24,6 +25,7 @@ app.use("/api", words);
 app.use("/api", definitions);
 app.use("/api", users);
 app.use("/api", categories)
+// app.use("/api", madeDefinitions)
 
 
 app.listen(port, function() {
