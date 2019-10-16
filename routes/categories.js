@@ -2,27 +2,27 @@ var express = require("express");
 var router = express.Router();
 
 const cors = require("cors");
-const Definition = require("../models/Definition");
+const Category = require("../models/Category");
 
 router.use(cors());
 
-router.get("/definitions", function(req, res, next) {
-  Definition.findAll()
-    .then(definitions => {
-      res.json(definitions);
+router.get("/categories", function(req, res, next) {
+  Category.findAll()
+    .then(categories => {
+      res.json(categories);
     })
     .catch(err => {
       res.send("error: " + err);
     });
 });
 
-router.post("/definitions", function(req, res, next) {
-  if (!req.body.id || !req.body.numberOfUpvotes || !req.body.numberOfDownvotes || !req.body.text) {
+router.post("/categories", function(req, res, next) {
+  if (!req.body.name) {
     res.status(400);
     res.json({ error: "Bad Data" });
   } 
   else {
-    Definition.create(req.body)
+    Category.create(req.body)
       .then(data => {
         res.send(data);
       })
