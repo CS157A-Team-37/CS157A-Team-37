@@ -12,7 +12,7 @@ export default props => {
         Login
       </a>
 
-      <a className="menu-item" href="/categories">
+      <a className="menu-item" href="/category">
         Browse Category
       </a>
 
