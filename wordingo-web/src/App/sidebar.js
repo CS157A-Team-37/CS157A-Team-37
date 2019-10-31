@@ -1,8 +1,6 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 
-
-
 export default props => {
   return (
     <Menu>
@@ -14,7 +12,7 @@ export default props => {
         Login
       </a>
 
-      <a className="menu-item" href="/categories">
+      <a className="menu-item" href="/category">
         Browse Category
       </a>
 
