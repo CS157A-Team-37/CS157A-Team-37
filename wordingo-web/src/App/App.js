@@ -1,6 +1,6 @@
 import React from 'react';
 import SideBar from './sidebar';
-import Routes from "./Routes";
+import routes from "./routes";
 import './App.css';
 
 export default function App() {
@@ -8,8 +8,8 @@ export default function App() {
     <div id="App">
       <SideBar />
       <div id="page-wrap">
+        <h1>Wordingo</h1>
       </div>
-      <Routes />
     </div>
   );
 }
