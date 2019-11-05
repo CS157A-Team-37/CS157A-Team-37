@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 const cors = require("cors");
-const Definition = require("../models/Definition");
+const Definition = require("../models").Definition;
 
 router.use(cors());
 
@@ -17,11 +17,14 @@ router.get("/definitions", function(req, res, next) {
 });
 
 router.post("/definitions", function(req, res, next) {
-  if (!req.body.id || !req.body.numberOfUpvotes || !req.body.numberOfDownvotes || !req.body.text) {
+  if (
+    !req.body.text ||
+    !req.body.numberOfUpvotes ||
+    !req.body.numberOfDownvotes
+  ) {
     res.status(400);
     res.json({ error: "Bad Data" });
-  } 
-  else {
+  } else {
     Definition.create(req.body)
       .then(data => {
         res.send(data);
