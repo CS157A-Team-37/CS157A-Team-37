@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 const cors = require("cors");
-const Category = require("../models/Category");
+const Category = require("../models").Category;
 
 router.use(cors());
 
@@ -20,8 +20,7 @@ router.post("/categories", function(req, res, next) {
   if (!req.body.name) {
     res.status(400);
     res.json({ error: "Bad Data" });
-  } 
-  else {
+  } else {
     Category.create(req.body)
       .then(data => {
         res.send(data);

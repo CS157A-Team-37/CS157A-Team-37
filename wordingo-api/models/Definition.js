@@ -1,28 +1,18 @@
-const Sequelize = require("sequelize");
-const db = require("../database/db.js");
-
-var Definition = db.sequelize.define(
-  "tbl_definition",
-  {
-    id: {
-      type: Sequelize.STRING,
-      primaryKey: true,
+"use strict";
+module.exports = (sequelize, DataTypes) => {
+  const Definition = sequelize.define(
+    "Definition",
+    {
+      text: DataTypes.STRING,
+      numberOfUpvotes: DataTypes.INTEGER,
+      numberOfDownvotes: DataTypes.INTEGER
     },
-    numberOfUpvotes: {
-      type: Sequelize.INTEGER
-    },
-    numberOfDownvotes: {
-      type: Sequelize.INTEGER
-    },
-    text: {
-        type: Sequelize.STRING(2000)
-    }
-  },
-  {
-    timestamps: false
-  }
-);
-
-Definition.sync({ alter: true });
-
-module.exports = Definition;
+    {}
+  );
+  Definition.associate = function(models) {
+    // Definition belongsTo Word
+    Definition.belongsTo(models.Word);
+    Definition.belongsTo(models.User);
+  };
+  return Definition;
+};
