@@ -2,6 +2,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 // Component imports
 import Word from "./word";
+import Definition from "./definition";
 
 // Bootstrap imports
 import Container from "react-bootstrap/Container";
@@ -14,11 +15,17 @@ class WordList extends React.Component {
   render() {
     return (
       <Container className="p-3">
+        {/* Word name and details */}
         <Row>
           <Word />
         </Row>
+        <hr />
+        {/* Definitions for this word */}
         <Row>
-          <Word />
+          <Definition />
+        </Row>
+        <Row>
+          <Definition />
         </Row>
       </Container>
     );

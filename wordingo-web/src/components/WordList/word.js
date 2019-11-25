@@ -30,7 +30,7 @@ class Word extends React.Component {
                 <Card.Text>Wurd-Naym</Card.Text>
               </Col>
               <Col>
-                <Card.Text>Word•Namek</Card.Text>
+                <Card.Text>Word•Name</Card.Text>
               </Col>
               <Col xs={6}></Col>
             </Row>
