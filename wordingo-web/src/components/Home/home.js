@@ -1,5 +1,6 @@
 import React from "react";
 import "./home.css";
+import Wordlist from "../WordList/wordList";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
         <h1>Wordingo</h1>
         <p></p>
       </div>
+      <Wordlist />
     </div>
   );
 }
