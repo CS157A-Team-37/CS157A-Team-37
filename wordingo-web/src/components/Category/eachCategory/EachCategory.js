@@ -4,10 +4,10 @@ import '../eachCategory/EachCategory.css';
 class EachCategory extends Component {
     render() {
         return (
-            <div className="card eachCategory">
-                <img className="card-img-top" src={this.props.imgUrl} alt="eachCategory"></img>
-                <div className="card-block">
-                    <a href="#" className="btn btn-primary"> {this.props.name}</a>
+            <div class="card eachCategory">
+                <img class="card-img-top" src={this.props.imgUrl} alt="eachCategory" class="center"></img>
+                <div class="card-body">
+                    <a href="#" className="btn btn-primary btn-block"> {this.props.name}</a>
                 </div>
             </div>
         );
@@ -15,3 +15,4 @@ class EachCategory extends Component {
 }
 
 export default EachCategory;
+
