@@ -17,13 +17,8 @@ export default props => {
         <Nav className="mr-auto">
           <Nav.Link href="/login">Login</Nav.Link>
           <Nav.Link href="/alphabetical">Alphabetical</Nav.Link>
-          <NavDropdown title="Categories" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/category">Category1</NavDropdown.Item>
-            <NavDropdown.Item href="/category">Category1</NavDropdown.Item>
-            <NavDropdown.Item href="/category">Category1</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="/test">Test</NavDropdown.Item>
-          </NavDropdown>
+          <Nav.Link href="/Category">Categories</Nav.Link>
+
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
