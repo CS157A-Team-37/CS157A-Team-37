@@ -1,7 +1,10 @@
 .eachCategory{
     width:20rem;
+    margin:20px;
 }
 
 .eachCategory img{
     max-height:15rem;
+    width:20rem;
+    
 }
