@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import Wordlist from "../WordList/WordList";
+import Wordlist from "../WordList/wordList";
 
 export default function Home() {
   return (
