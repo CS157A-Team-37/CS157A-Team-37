@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="Home">
       <div className="lander">
-        <h1>Wordingo</h1>
+        <h1>Wordingo Home </h1>
         <p></p>
       </div>
     </div>
