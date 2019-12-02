@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 export default props => {
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="/">Wordingo</Navbar.Brand>
+      <Navbar.Brand href="/" mb-0 h1>Wordingo</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
