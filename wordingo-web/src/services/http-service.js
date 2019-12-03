@@ -22,6 +22,17 @@ class HttpService {
     return promise;
   };
 
+  getOneWord = word_name => {
+    var promise = new Promise((resolve, reject) => {
+      fetch(`http://localhost:5000/api/words/${word_name}`).then(response => {
+        console.log("VAR IN HTTP IS " + word_name);
+        resolve(response.json());
+      });
+    });
+
+    return promise;
+  };
+
   getDefinitions = () => {
     var promise = new Promise((resolve, reject) => {
       fetch("http://localhost:5000/api/Definitions").then(response => {
