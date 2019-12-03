@@ -26,6 +26,7 @@ class Word extends React.Component {
       fontSize: "5rem"
     };
 
+
     // console.log("PROPS.WORD IS NOT NULL");
     // console.log(this.props.word[0].name);
     return (

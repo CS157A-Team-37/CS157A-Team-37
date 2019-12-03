@@ -16,6 +16,7 @@ router.get("/words", function(req, res, next) {
     });
 });
 
+
 router.get("/words/:word_name", function(req, res, next) {
   Word.findAll({
     where: {

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import '../Alphabetical/wordlist.css';
 
 class Wordlist extends Component {
-
     constructor(props) {
         super(props);
         this.state = { letterClicked: "C" };
