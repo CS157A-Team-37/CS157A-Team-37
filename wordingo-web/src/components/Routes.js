@@ -5,9 +5,7 @@ import login from "./Login/login.js";
 import alphabetical from "./Alphabetical/alphabetical";
 import category from "./Category/category";
 import test from "./Test/test.js";
-import WordList from "./WordList/WordList";
-
-
+import WordList from "./WordList/wordList";
 
 export default function Routes() {
   return (
@@ -18,7 +16,6 @@ export default function Routes() {
       <Route path="/category" component={category} />
       {/*This is where the test Word/Definitions is*/}
       <Route path="/test" component={WordList} />{" "}
-
     </Switch>
   );
 }

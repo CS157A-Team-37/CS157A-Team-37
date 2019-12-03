@@ -16,8 +16,8 @@ router.get("/categories", function(req, res, next) {
     });
 });
 
-router.post("/categories", function(req, res, next) {
-  if (!req.body.name) {
+router.post("/categories/add", function(req, res, next) {
+  if (!req.body.name || !req.body.wordID) {
     res.status(400);
     res.json({ error: "Bad Data" });
   } else {

@@ -1,9 +1,13 @@
 "use strict";
+
 module.exports = (sequelize, DataTypes) => {
+  // require("./Word");
+  // require(sequelize);
   const Category = sequelize.define(
     "Category",
     {
-      name: DataTypes.STRING
+      name: DataTypes.STRING,
+      wordID: DataTypes.INTEGER
     },
     {}
   );
