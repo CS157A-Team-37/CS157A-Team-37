@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import '../eachCategory/EachCategory.css';
 
 class EachCategory extends Component {
-    componentDidMount () {
-      }
-
-
-
     render() {
         return (
             <div class="card eachCategory">

@@ -16,14 +16,25 @@ router.get("/words", function(req, res, next) {
     });
 });
 
+
+router.get("/words/:word_name", function(req, res, next) {
+  Word.findAll({
+    where: {
+      name: req.params.word_name
+    }
+  })
+    .then(word => {
+      res.json(word);
+    })
+    .catch(err => {
+      res.send("error: " + err);
+    });
+});
+
 router.post("/words/add", function(req, res, next) {
-  console.log("req.body.name: " + req.body.name);
-  console.log("req.body: " + req.body);
-  console.log("req.method: " + req.method);
   if (!req.body.name || !req.body.syllables || !req.body.phoneticSpelling) {
     res.status(400);
-    
-    res.json({ error: "Bad Data-o" });
+    res.json({ error: "Bad Data" });
   } else {
     Word.create(req.body)
       .then(data => {

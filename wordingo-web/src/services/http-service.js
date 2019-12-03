@@ -52,10 +52,30 @@ class HttpService {
       body: JSON.stringify(data)}).then(response => {
         resolve(response.json());
       });
+      
+  getOneWord = word_name => {
+    var promise = new Promise((resolve, reject) => {
+      fetch(`http://localhost:5000/api/words/${word_name}`).then(response => {
+        console.log("VAR IN HTTP IS " + word_name);
+        resolve(response.json());
+      });
     });
 
     return promise;
   };
+
+  getDefinitionsForOneWord = word_id => {
+    var promise = new Promise((resolve, reject) => {
+      fetch(`http://localhost:5000/api/definitions/word-:${word_id}`).then(
+        response => {
+          resolve(response.json());
+        }
+      );
+    });
+
+    return promise;
+  };
+      
   addDefinition = (data) => {
     var promise = new Promise((resolve, reject) => {
       fetch("http://localhost:5000/api/definitions/add", 
@@ -65,13 +85,18 @@ class HttpService {
         "Access-Control-Origin": "*"
       },
       body: JSON.stringify(data)}).then(response => {
+
+  getDefinitions = () => {
+    var promise = new Promise((resolve, reject) => {
+      fetch("http://localhost:5000/api/definitions").then(response => {
+        
         resolve(response.json());
       });
     });
 
     return promise;
   };
-  
+        
   getCategories = () => {
     var promise = new Promise((resolve, reject) => {
       fetch("http://localhost:5000/api/categories").then(response => {

@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import Wordlist from "../WordList/WordList";
+import Wordlist from "../WordList/wordList";
 
 //import service
 import HttpService from "../../services/http-service";
@@ -9,9 +9,7 @@ const http = new HttpService();
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { users: [], 
-                    words: [],
-                    categories: [] };
+    this.state = { users: [] };
 
     //Bind Functions
     this.getUsers = this.getUsers.bind(this);
@@ -21,8 +19,6 @@ class Home extends React.Component {
   componentDidMount() {
     console.log("MOUNTED");
     this.getUsers();
-    this.addWords();
-    this.getCategories();
   }
 
   getUsers = () => {
@@ -34,28 +30,6 @@ class Home extends React.Component {
       err => {}
     );
   };
-
-
-  addWords = () => {
-    var self = this;
-    http.addWords().then(
-      data => {
-        this.setState({ words: data });
-      },
-      err => {}
-    );
-  };
-
-  getCategories = () => {
-    var self = this;
-    http.getCategories().then(
-      data => {
-        this.setState({ categories: data });
-      },
-      err => {}
-    );
-  };
-
   userList = () => {
     //map goes through every element in an array and does something(takes in callback)
     const list = this.state.users.map(user => (
@@ -67,22 +41,6 @@ class Home extends React.Component {
 
     return list;
   };
-
-
-
-  categoryList = () => {
-    //map goes through every element in an array and does something(takes in callback)
-    const list = this.state.categories.map(category => (
-      //the key has to be here on the outermost level
-      <div className="col-sm-4" key={category._id}>
-        <h1>{category.name}</h1>
-      </div>
-    ));
-
-    return list;
-  };
-
-
   render() {
     const firstUser = this.state.users[0];
 
@@ -90,6 +48,8 @@ class Home extends React.Component {
       <div className="Home">
         <div className="lander">
           <h1>Wordingo Home </h1>
+
+          <div className="row">{this.userList()}</div>
           <p></p>
         </div>
       </div>
