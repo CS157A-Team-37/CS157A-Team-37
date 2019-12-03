@@ -5,7 +5,7 @@ import login from "./Login/login.js";
 import alphabetical from "./Alphabetical/alphabetical";
 import category from "./Category/category";
 import test from "./Test/test.js";
-import WordList from "./WordList/wordList";
+import WordList from "./WordList/WordList";
 
 export default function Routes() {
   return (

@@ -5,89 +5,89 @@ import "../Alphabetical/alphabetNav.css";
 class AlphabetNav extends Component {
     render() {
         return (
-            <nav class="navbar navbar-expand-lg navbar-light"  >
-                <div class="collapse navbar-collapse" id="navbarNav" >
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="Category">All <span class="sr-only">(current)</span></a>
+            <nav className="navbar navbar-expand-lg navbar-light"  >
+                <div className="collapse navbar-collapse" id="navbarNav" >
+                    <ul className="navbar-nav">
+                        <li className="nav-item active">
+                            <a className="nav-link" href="#">All <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">A</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">A</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">B</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">B</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">C</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">C</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">D</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">D</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">E</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">E</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">F</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">F</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">G</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">G</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">H</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">H</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">I</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">I</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">J</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">J</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">K</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">K</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">L</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">L</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">M</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">M</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">N</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">N</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">O</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">O</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">P</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">P</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Q</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Q</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">R</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">R</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">S</a>
+                        <li clasName="nav-item">
+                            <a className="nav-link" href="#">S</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">T</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">T</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">U</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">U</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">V</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">V</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">W</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">W</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">X</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">X</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Y</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Y</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Z</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Z</a>
                         </li>
                     </ul>
                 </div>
