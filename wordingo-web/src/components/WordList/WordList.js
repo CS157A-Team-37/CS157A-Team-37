@@ -24,16 +24,11 @@ class WordList extends React.Component {
       word: [],
       definitions: []
     };
-    console.log("WORDLIST CONSTRUCTOR");
     this.findWord();
 
     //Bind Methods
     this.findWord = this.findWord.bind(this);
     this.findDefinitions = this.findDefinitions.bind(this);
-  }
-
-  componentDidMount() {
-    console.log("WORDLIST MOUNTED");
   }
 
   findWord = () => {
@@ -42,7 +37,6 @@ class WordList extends React.Component {
     http.getOneWord(this.state.urlParam).then(
       data => {
         this.setState({ word: data });
-        console.log("INSIDE FIND WORD");
       },
       err => {}
     );
@@ -51,28 +45,27 @@ class WordList extends React.Component {
   findDefinitions = () => {};
 
   render() {
-    console.log("WORDLIST RENDER");
-    return (
-      <Container className="p-3">
-        {/* Word name and details */}
-        <Row>
-          <Word word={this.state.word} />
-        </Row>
-        <hr />
-        {/* Definitions for this word */}
-        <Row>
-          <Definition />
-        </Row>
-        <Row>
-          <Definition />
-        </Row>
-      </Container>
-    );
+    if (this.state.word.length == 0) {
+      return <div></div>;
+    } else {
+      return (
+        <Container className="p-3">
+          {/* Word name and details */}
+          <Row>
+            <Word word={this.state.word} />
+          </Row>
+          <hr />
+          {/* Definitions for this word */}
+          <Row>
+            <Definition />
+          </Row>
+          <Row>
+            <Definition />
+          </Row>
+        </Container>
+      );
+    }
   }
 }
-
-// Welcome.propTypes = {
-//   text: PropTypes.string.isRequired
-// };
 
 export default WordList;
