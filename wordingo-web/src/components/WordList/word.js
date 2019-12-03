@@ -13,7 +13,7 @@ class Word extends React.Component {
   }
 
   render() {
-    console.log(this.props.word);
+    // console.log(this.props.word);
 
     const cardStyling = {
       width: "100%",
@@ -26,8 +26,8 @@ class Word extends React.Component {
       fontSize: "5rem"
     };
 
-    console.log("PROPS.WORD IS NOT NULL");
-    console.log(this.props.word[0].name);
+    // console.log("PROPS.WORD IS NOT NULL");
+    // console.log(this.props.word[0].name);
     return (
       <>
         <Card bg="info" text="white" style={cardStyling}>

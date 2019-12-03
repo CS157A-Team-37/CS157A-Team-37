@@ -24,27 +24,57 @@ class WordList extends React.Component {
       word: [],
       definitions: []
     };
-    this.findWord();
+    // this.findWord();
+    // this.findDefinitions();
 
     //Bind Methods
     this.findWord = this.findWord.bind(this);
     this.findDefinitions = this.findDefinitions.bind(this);
+    this.setWordAndDefinition = this.setWordAndDefinition.bind(this);
   }
 
-  findWord = () => {
+  componentDidMount() {
+    this.setWordAndDefinition();
+  }
+
+  componentDidUpdate() {}
+
+  setWordAndDefinition = () => {
+    this.findWord(this.findDefinitions);
+  };
+
+  findWord = getDefinitions => {
     var self = this;
-    const currentWord = { ...this.state.word };
     http.getOneWord(this.state.urlParam).then(
       data => {
         this.setState({ word: data });
       },
       err => {}
     );
+    getDefinitions();
+    console.log("COMPLETED FIND WORD");
   };
 
-  findDefinitions = () => {};
+  findDefinitions = () => {
+    console.log("IN FIND DEFINITIONS");
+    console.log(this.state.word.length);
+    var self = this;
+    if (this.state.word.length == 1) {
+      console.log("IN FIND DEFINITIONS IFFFF");
+      console.log(this.state.word[0].id);
+      http.getDefinitionsForOneWord(this.state.word.id).then(
+        data => {
+          console.log("SET STATE FOR DEFINITIONS");
+
+          this.setState({ definitions: data });
+        },
+        err => {}
+      );
+    }
+  };
 
   render() {
+    //! IMPORTANT TO KNOW... NEED A CONDITION IF WORD IS EMPTY @ START
     if (this.state.word.length == 0) {
       return <div></div>;
     } else {
@@ -55,9 +85,10 @@ class WordList extends React.Component {
             <Word word={this.state.word} />
           </Row>
           <hr />
+
           {/* Definitions for this word */}
           <Row>
-            <Definition />
+            <Definition def={this.state.def} />
           </Row>
           <Row>
             <Definition />

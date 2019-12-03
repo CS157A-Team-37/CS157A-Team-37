@@ -35,12 +35,14 @@ class HttpService {
 
   getDefinitionsForOneWord = word_id => {
     var promise = new Promise((resolve, reject) => {
-      fetch(`http://localhost:5000/api/definitions/:${word_id}`).then(
+      fetch(`http://localhost:5000/api/definitions/word-:${word_id}`).then(
         response => {
           resolve(response.json());
         }
       );
     });
+
+    return promise;
   };
 
   getDefinitions = () => {
