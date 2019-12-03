@@ -11,7 +11,7 @@ import word from "./WordList/word";
 import AddWord from "./AddWord/AddWord";
 import AddDefinition from "./AddDefinition/AddDefinition";
 
-import WordList from "./WordList/wordList";
+import WordList from "./WordList/WordList";
 
 export default function Routes() {
   return (
@@ -21,7 +21,7 @@ export default function Routes() {
       <Route path="/alphabetical" component={alphabetical} />
       <Route path="/category" component={category} />
     
-      <Route path="/word-definition/:wordname" component={word} />
+
       <Route path="/singleCategory/:catname" component={singleCategory} />
       <Route path="/AddWord/:catname" component={AddWord} />
       <Route path="/AddDefinition" component={AddDefinition} />
