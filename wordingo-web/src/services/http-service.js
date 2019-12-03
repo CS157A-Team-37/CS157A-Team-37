@@ -22,9 +22,32 @@ class HttpService {
     return promise;
   };
 
+  getOneWord = word_name => {
+    var promise = new Promise((resolve, reject) => {
+      fetch(`http://localhost:5000/api/words/${word_name}`).then(response => {
+        console.log("VAR IN HTTP IS " + word_name);
+        resolve(response.json());
+      });
+    });
+
+    return promise;
+  };
+
+  getDefinitionsForOneWord = word_id => {
+    var promise = new Promise((resolve, reject) => {
+      fetch(`http://localhost:5000/api/definitions/word-:${word_id}`).then(
+        response => {
+          resolve(response.json());
+        }
+      );
+    });
+
+    return promise;
+  };
+
   getDefinitions = () => {
     var promise = new Promise((resolve, reject) => {
-      fetch("http://localhost:5000/api/Definitions").then(response => {
+      fetch("http://localhost:5000/api/definitions").then(response => {
         resolve(response.json());
       });
     });

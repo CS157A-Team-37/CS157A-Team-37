@@ -15,7 +15,7 @@ export default function Routes() {
       <Route path="/alphabetical" component={alphabetical} />
       <Route path="/category" component={category} />
       {/*This is where the test Word/Definitions is*/}
-      <Route path="/test" component={WordList} />{" "}
+      <Route path="/word-definition/:word_name" component={WordList} />{" "}
     </Switch>
   );
 }
