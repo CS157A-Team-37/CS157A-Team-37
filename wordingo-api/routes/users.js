@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 const cors = require("cors");
-const Users = require("../models/User");
+const Users = require("../models").User;
 
 router.use(cors());
 
@@ -16,12 +16,11 @@ router.get("/users", function(req, res, next) {
     });
 });
 
-router.post("/users", function(req, res, next) {
+router.post("/users/add", function(req, res, next) {
   if (!req.body.username || !req.body.email || !req.body.password) {
     res.status(400);
     res.json({ error: "Bad Data" });
-  } 
-  else {
+  } else {
     Users.create(req.body)
       .then(data => {
         res.send(data);

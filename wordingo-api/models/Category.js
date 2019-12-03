@@ -1,19 +1,19 @@
-const Sequelize = require("sequelize");
-const db = require("../database/db.js");
+"use strict";
 
-var Category = db.sequelize.define(
-  "tbl_category",
-  {
-    name: {
-      type: Sequelize.STRING,
-      primaryKey: true,
-    }
-  },
-  {
-    timestamps: false
-  }
-);
-
-Category.sync({ alter: true });
-
-module.exports = Category;
+module.exports = (sequelize, DataTypes) => {
+  // require("./Word");
+  // require(sequelize);
+  const Category = sequelize.define(
+    "Category",
+    {
+      name: DataTypes.STRING,
+      wordID: DataTypes.INTEGER
+    },
+    {}
+  );
+  Category.associate = function(models) {
+    // Categories belongToMany Words
+    // Category.belongsToMany(models.Word, { through: "categoryOfWord" });
+  };
+  return Category;
+};
