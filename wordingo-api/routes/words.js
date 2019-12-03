@@ -16,7 +16,7 @@ router.get("/words", function(req, res, next) {
     });
 });
 
-router.post("/words", function(req, res, next) {
+router.post("/words/add", function(req, res, next) {
   if (!req.body.name || !req.body.syllables || !req.body.phoneticSpelling) {
     res.status(400);
     res.json({ error: "Bad Data" });

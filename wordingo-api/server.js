@@ -12,21 +12,6 @@ var definitions = require("./routes/definitions");
 var users = require("./routes/users");
 var categories = require("./routes/categories");
 
-// Testing relationships
-// models.Word.create({
-//   name: "Technology",
-//   syllables: "tech•no•lo•gy",
-//   phoneticSpelling: "tehknauluhjee"
-// }).then(word => {
-//   word
-//     .createDefinition({
-//       text: "Stuff smart people make",
-//       numberOfUpvotes: 12,
-//       numberOfDownvotes: 4
-//     })
-//     .then(() => console.log("It worked!"));
-// });
-
 var app = express();
 app.use(cors());
 
