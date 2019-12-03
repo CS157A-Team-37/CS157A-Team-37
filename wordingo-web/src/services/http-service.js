@@ -40,7 +40,6 @@ class HttpService {
     return promise;
   };
   
-
   addCategory = (data) => {
     var promise = new Promise((resolve, reject) => {
       fetch("http://localhost:5000/api/categories/add", 
@@ -52,6 +51,10 @@ class HttpService {
       body: JSON.stringify(data)}).then(response => {
         resolve(response.json());
       });
+    });
+
+    return promise;
+  };
       
   getOneWord = word_name => {
     var promise = new Promise((resolve, reject) => {
@@ -85,7 +88,13 @@ class HttpService {
         "Access-Control-Origin": "*"
       },
       body: JSON.stringify(data)}).then(response => {
+        resolve(response.json());
+      });
+    });
 
+    return promise;
+  };
+  
   getDefinitions = () => {
     var promise = new Promise((resolve, reject) => {
       fetch("http://localhost:5000/api/definitions").then(response => {
