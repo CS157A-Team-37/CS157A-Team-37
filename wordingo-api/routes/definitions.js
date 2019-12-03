@@ -16,6 +16,21 @@ router.get("/definitions", function(req, res, next) {
     });
 });
 
+// GET Definitions for a certain word
+router.get("/definitions/word-:word_id", function(req, res, next) {
+  Definition.findAll({
+    where: {
+      wordID: req.params.word_id
+    }
+  })
+    .then(definitions => {
+      res.json(definitions);
+    })
+    .catch(err => {
+      res.send("error: " + err);
+    });
+});
+
 router.post("/definitions/add", function(req, res, next) {
   if (
     !req.body.text ||

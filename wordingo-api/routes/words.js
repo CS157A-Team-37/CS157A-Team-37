@@ -16,6 +16,21 @@ router.get("/words", function(req, res, next) {
     });
 });
 
+
+router.get("/words/:word_name", function(req, res, next) {
+  Word.findAll({
+    where: {
+      name: req.params.word_name
+    }
+  })
+    .then(word => {
+      res.json(word);
+    })
+    .catch(err => {
+      res.send("error: " + err);
+    });
+});
+
 router.post("/words/add", function(req, res, next) {
   if (!req.body.name || !req.body.syllables || !req.body.phoneticSpelling) {
     res.status(400);

@@ -85,14 +85,12 @@ class Home extends React.Component {
     //map goes through every element in an array and does something(takes in callback)
     const list = this.state.categories.map(category => (
       //the key has to be here on the outermost level
-        {category}
+      <div className="col-sm-40" key={category._id}>
+        {category.name}
+      </div>
     ));
-    const rows = [];
-    for (var i = 0; i < list.length; i++) {
-            rows.push(this.state.categories[i].wordID);
-    }
 
-    return rows;
+    return list;
   };
 
 
@@ -103,14 +101,14 @@ for (var i = 0; i < this.categoryList().length; i++) {
     rows.push(<EachCategory className="col-xly-1" name={this.categoryList()[i]} 
     imgUrl="https://dynamicmedia.zuza.com/zz/m/original_/0/d/0df2dd8b-2a20-4a12-bfbe-8b6144760e9c/obsolete_cover___Gallery.jpg"/>
    );
-
-
 }
 return (<div className="category">
 <div className="container Category-main">
     <div className="row">{rows}       </div>
- </div>
+        
+        </div>
       </div>);
+
   }
   
 }

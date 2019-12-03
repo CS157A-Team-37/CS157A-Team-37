@@ -30,7 +30,6 @@ class Home extends React.Component {
       err => {}
     );
   };
-
   userList = () => {
     //map goes through every element in an array and does something(takes in callback)
     const list = this.state.users.map(user => (
@@ -42,7 +41,6 @@ class Home extends React.Component {
 
     return list;
   };
-
   render() {
     const firstUser = this.state.users[0];
 
@@ -50,6 +48,7 @@ class Home extends React.Component {
       <div className="Home">
         <div className="lander">
           <h1>Wordingo Home </h1>
+
           <div className="row">{this.userList()}</div>
           <p></p>
         </div>
