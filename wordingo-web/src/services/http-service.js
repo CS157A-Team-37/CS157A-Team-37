@@ -12,6 +12,26 @@ class HttpService {
     return promise;
   };
 
+  getWords = () => {
+    var promise = new Promise((resolve, reject) => {
+      fetch("http://localhost:5000/api/words").then(response => {
+        resolve(response.json());
+      });
+    });
+
+    return promise;
+  };
+
+  getDefinitions = () => {
+    var promise = new Promise((resolve, reject) => {
+      fetch("http://localhost:5000/api/Definitions").then(response => {
+        resolve(response.json());
+      });
+    });
+
+    return promise;
+  };
+
   getCategories = () => {
     var promise = new Promise((resolve, reject) => {
       fetch("http://localhost:5000/api/categories").then(response => {
