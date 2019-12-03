@@ -16,11 +16,13 @@ router.get("/definitions", function(req, res, next) {
     });
 });
 
-router.post("/definitions", function(req, res, next) {
+router.post("/definitions/add", function(req, res, next) {
   if (
     !req.body.text ||
     !req.body.numberOfUpvotes ||
-    !req.body.numberOfDownvotes
+    !req.body.numberOfDownvotes ||
+    !req.body.wordID ||
+    !req.body.userID
   ) {
     res.status(400);
     res.json({ error: "Bad Data" });
