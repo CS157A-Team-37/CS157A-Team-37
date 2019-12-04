@@ -62,21 +62,6 @@ class Alphabetical extends React.Component {
         {/* <AlphabetNav />
         <Wordlist allwords={this.state.words}/> */}
 
-        <BrowserRouter>
-          <div>
-            <h1> Alphabetical Page</h1>
-            <alphabetArray/>
-            <ul>
-              {/* Should be an array here */}
-              <li><Link to='/netflix'>A</Link></li>
-              <li><Link to='/zillow'>B</Link></li>
-              <li><Link to='/google'>C</Link></li>
-            </ul>
-
-            <Route path ='/:letter' component={alphabetical} />
-          </div>
-
-        </BrowserRouter>
         
       </div>
     );
