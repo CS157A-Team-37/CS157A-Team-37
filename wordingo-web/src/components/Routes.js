@@ -10,6 +10,7 @@ import test from "./Test/test.js";
 import word from "./WordList/word";
 import AddWord from "./AddWord/AddWord";
 import AddDefinition from "./AddDefinition/AddDefinition";
+import Letter from "./Alphabetical/alphabetical"
 
 import WordList from "./WordList/wordList";
 
@@ -25,6 +26,7 @@ export default function Routes() {
       <Route path="/AddDefinition" component={AddDefinition} />
       {/*This is where the test Word/Definitions is*/}
       <Route path="/word-definition/:word_name" component={WordList} />{" "}
+      <Route path ='/:letter' component={alphabetical} />
     </Switch>
   );
 }

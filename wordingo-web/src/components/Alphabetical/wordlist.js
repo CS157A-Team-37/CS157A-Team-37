@@ -4,7 +4,7 @@ import '../Alphabetical/wordlist.css';
 class Wordlist extends Component {
     constructor(props) {
         super(props);
-        this.state = { letterClicked: "C" };
+        this.state = { letterClicked: "A" };
     
         //Bind Functions
         this.list = this.list.bind(this);

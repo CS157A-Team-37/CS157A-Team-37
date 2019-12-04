@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import Wordlist from "../WordList/wordList";
+import Wordlist from "../WordList/WordList";
 
 //import service
 import HttpService from "../../services/http-service";
