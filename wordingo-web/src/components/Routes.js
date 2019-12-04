@@ -21,7 +21,7 @@ export default function Routes() {
       <Route path="/alphabetical" component={alphabetical} />
       <Route path="/category" component={category} />
     
-      <Route path="/word-definition/:wordname" component={word} />
+
       <Route path="/singleCategory/:catname" component={singleCategory} />
       <Route path="/AddWord/:catname" component={AddWord} />
       <Route path="/AddDefinition" component={AddDefinition} />
