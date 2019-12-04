@@ -4,8 +4,20 @@ import "../Alphabetical/wordlist"
 import Wordlist from "../Alphabetical/wordlist";
 import AlphabetNav from "./alphabetNav";
 
+import {
+  BrowserRouter,
+  Route,
+  Link
+} from 'react-router-dom'
+
 import HttpService from "../../services/http-service";
 const http=new HttpService();
+// var alphabetArray="ABCDEFGHIGKLMNOPQRSTUVWXYZ"
+const alphabetical =({match})=> (
+  <div>
+    <h3>{match.params.letter} </h3>
+  </div>
+)
 
 class Alphabetical extends React.Component {
   constructor(props) {
@@ -21,6 +33,7 @@ class Alphabetical extends React.Component {
     console.log("MOUNTED");
     this.getWords();
   }
+
   getWords = () => {
     var self = this;
     http.getWords().then(
@@ -42,12 +55,28 @@ class Alphabetical extends React.Component {
 
     return list;
   };
-
+  
   render(){
     return (
       <div className="alphabetical">
-        <AlphabetNav />
-        <Wordlist allwords={this.state.words}/>
+        {/* <AlphabetNav />
+        <Wordlist allwords={this.state.words}/> */}
+
+        <BrowserRouter>
+          <div>
+            <h1> Alphabetical Page</h1>
+            <alphabetArray/>
+            <ul>
+              {/* Should be an array here */}
+              <li><Link to='/netflix'>A</Link></li>
+              <li><Link to='/zillow'>B</Link></li>
+              <li><Link to='/google'>C</Link></li>
+            </ul>
+
+            <Route path ='/:letter' component={alphabetical} />
+          </div>
+
+        </BrowserRouter>
         
       </div>
     );

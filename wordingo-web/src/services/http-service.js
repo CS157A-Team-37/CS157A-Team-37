@@ -11,7 +11,6 @@ class HttpService {
 
     return promise;
   };
-
   getWords = () => {
     var promise = new Promise((resolve, reject) => {
       fetch("http://localhost:5000/api/words").then(response => {
@@ -35,24 +34,21 @@ class HttpService {
      
       });
     });
-
-    
     return promise;
   };
-  
 
-  addCategory = (data) => {
-    var promise = new Promise((resolve, reject) => {
-      fetch("http://localhost:5000/api/categories/add", 
-      {method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        "Access-Control-Origin": "*"
-      },
-      body: JSON.stringify(data)}).then(response => {
-        resolve(response.json());
-      });
-      
+  // addCategory = (data) => {
+  //   var promise = new Promise((resolve, reject) => {
+  //     fetch("http://localhost:5000/api/categories/add", 
+  //     {method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       "Access-Control-Origin": "*"
+  //     },
+  //     body: JSON.stringify(data)}).then(response => {
+  //       resolve(response.json());
+  //     });
+
   getOneWord = word_name => {
     var promise = new Promise((resolve, reject) => {
       fetch(`http://localhost:5000/api/words/${word_name}`).then(response => {
@@ -75,37 +71,38 @@ class HttpService {
 
     return promise;
   };
-      
-  addDefinition = (data) => {
-    var promise = new Promise((resolve, reject) => {
-      fetch("http://localhost:5000/api/definitions/add", 
-      {method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        "Access-Control-Origin": "*"
-      },
-      body: JSON.stringify(data)}).then(response => {
+  
+  // addDefinition = (data) => {
+  //   var promise = new Promise((resolve, reject) => {
+  //     fetch("http://localhost:5000/api/definitions/add", 
+  //     {method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       "Access-Control-Origin": "*"
+  //     },
+  //     body: JSON.stringify(data)}).then(response => {
 
-  getDefinitions = () => {
-    var promise = new Promise((resolve, reject) => {
-      fetch("http://localhost:5000/api/definitions").then(response => {
-        
-        resolve(response.json());
+    getDefinitions = () => {
+      var promise = new Promise((resolve, reject) => {
+        fetch("http://localhost:5000/api/definitions").then(response => {
+          
+          resolve(response.json());
+        });
       });
-    });
+  
+      return promise;
+    };
 
-    return promise;
-  };
-        
-  getCategories = () => {
-    var promise = new Promise((resolve, reject) => {
-      fetch("http://localhost:5000/api/categories").then(response => {
-        resolve(response.json());
+    getCategories = () => {
+      var promise = new Promise((resolve, reject) => {
+        fetch("http://localhost:5000/api/categories").then(response => {
+          resolve(response.json());
+        });
       });
-    });
+  
+      return promise;
+    };
 
-    return promise;
-  };
 }
 
 export default HttpService; //equal to module.exports ==....

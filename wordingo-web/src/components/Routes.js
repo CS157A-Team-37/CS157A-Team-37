@@ -11,7 +11,7 @@ import word from "./WordList/word";
 import AddWord from "./AddWord/AddWord";
 import AddDefinition from "./AddDefinition/AddDefinition";
 
-import WordList from "./WordList/wordList";
+import WordList from "./WordList/WordList";
 
 export default function Routes() {
   return (
