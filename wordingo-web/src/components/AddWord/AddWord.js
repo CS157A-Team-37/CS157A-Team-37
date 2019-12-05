@@ -12,53 +12,80 @@ class AddWord extends React.Component {
   constructor(props) {
     super(props);
     this.state = { users: [], 
-                    word: {'id':'11'},
+                    word: [{'id':'11',name:''}],
+                    returnWord:[{name:'emp'}],
                     categories: [], 
                      wordName: '',
                      syllables: '',
-                     phoneticSpelling: ''
+                     phoneticSpelling: '',
+                     id: 0
                     };
 
     //Bind Functions
   }
 
-   shoot() {
-    alert("Great Shot!");
-  }
   myChangeHandler = (event) => {
 
     this.setState({wordName: event.target.value});
 
-    console.log(this.state.wordName);
+
   }
   myChangeHandlerSyl = (event) => {
 
     this.setState({syllables: event.target.value});
-    console.log(this.state.syllables);
+
   }
 
   myChangeHandlerPhon = (event) => {
     this.setState({phoneticSpelling: event.target.value});
-    console.log(this.state.phoneticSpelling);
+
   }
 
    addWords = () => {
-    console.log(this.props.match.params.catname);
+  
     var self = this;
+
     http.addWords({
       "name": this.state.wordName,
       "syllables": this.state.syllables,
       "phoneticSpelling": this.state.phoneticSpelling
+      
     }).then(
       data => {
+        
         this.setState({ word: data });
+        this.id = data.id;
+        console.log("heretest:" +this.id);
+        http.addCategory({
+          "name": this.props.match.params.catname,
+          "wordID": data.id
+        })
       },
       err => {}
+    ).then(
+      
+      
     );
+
   };
 
   caller = () => {
     this.addWords();
+    
+  };
+
+  findWord = () => {
+    var self = this;
+    console.log("YEAH");
+    http.getOneWord("second").then(
+      data => {
+        this.setState({ word: data });
+        
+        
+      }
+    );
+   
+    
   };
   
   addCategory = () => {
@@ -101,11 +128,11 @@ class AddWord extends React.Component {
           <Form.Text className="text-muted">
           </Form.Text>
         </Form.Group>
-        <button onClick={this.addWords, this.addCategory}>Submit</button>
-        <button onClick={this.addCategory}>SubmitCat</button>
+        <button name="data" type="button" onClick={this.addWords}>Submit</button>
       </Form>
     </Container>
     );
   }
 }
+//<button onClick={this.addWords, this.addCategory}>Submit</button>
 export default AddWord
