@@ -16,7 +16,8 @@ class singleCategory extends React.Component{
                     words: [],
                     categories: [],
                     wordID: [],
-                    wordNames: []};
+                    wordNames: [],
+      catName: this.props.match.params};
 
     //Bind Functions
     this.getUsers = this.getUsers.bind(this);
@@ -34,8 +35,7 @@ class singleCategory extends React.Component{
 
   findCategories = () => {
     var self = this;
-    console.log("test");
-    http.getCategoryWordIDs("cat1").then(
+    http.getCategoryWordIDs(this.props.match.params.catname).then(
       data => {
         this.setState({ cats: data });
         var wordArr = [];
