@@ -1,18 +1,22 @@
 import React from "react";
 import "./category.css";
-import EachCategory from "../Category/eachCategory/EachCategory";
+import EachCategory from '../Category/eachCategory/EachCategory';
 
-import EachCategory2 from "../Category/eachCategory/EachCategory2";
+import EachCategory2 from '../Category/eachCategory/EachCategory2';
 
-import Wordlist from "../WordList/wordList";
+import Wordlist from "../WordList/WordList";
 
 //import service
 import HttpService from "../../services/http-service";
 const http = new HttpService();
-class singleCategory extends React.Component {
+class singleCategory extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { users: [], words: [], categories: [] };
+    this.state = { users: [], 
+                    words: [],
+                    categories: [],
+                    wordID: [],
+                    wordNames: []};
 
     //Bind Functions
     this.getUsers = this.getUsers.bind(this);
@@ -25,7 +29,37 @@ class singleCategory extends React.Component {
     this.getUsers();
     this.getWords();
     this.getCategories();
+    this.findCategories();
   }
+
+  findCategories = () => {
+    var self = this;
+    console.log("test");
+    http.getCategoryWordIDs("cat1").then(
+      data => {
+        this.setState({ cats: data });
+        var wordArr = [];
+        for(var i = 0; i < data.length; i++)
+        {
+          this.state.wordID.push(data[i].wordID);
+          console.log("word id in find categories: " + data[i].wordID);
+          http.getOneWordById(data[i].wordID).then(
+            data2 => {
+          wordArr.push(data2[0].name); 
+          this.setState({ wordNames: wordArr });
+            }
+          );
+        
+        }
+        
+    console.log("data name: " + data[0].name);
+    console.log("cat name: " + this.state.cats[0].name);
+      },
+      err => {}
+    );
+    
+    
+  };
 
   getUsers = () => {
     var self = this;
@@ -69,45 +103,43 @@ class singleCategory extends React.Component {
     return list;
   };
 
+
   wordList = () => {
     //map goes through every element in an array and does something(takes in callback)
-    const list = this.state.words.map(word => ({ word }));
-
+    const list = this.state.wordNames.map(wordNames => (
+        {wordNames}
+    ));
+    
     const rows = [];
-    for (var i = 0; i < list.length; i++) {
-      if (this.state.words[i].id == this.props.match.params.catname)
-        rows.push(this.state.words[i].name);
-    }
+    for (var i = 0; i < list.length; i++) 
+            rows.push(this.state.wordsNames[i]);
+    
     return rows;
   };
 
+
   render() {
     const firstUser = this.state.users[0];
+
     var rows = [];
-    for (var i = 0; i < this.wordList().length; i++) {
-      rows.push(
-        <EachCategory2
-          className="col-xly-1"
-          name={this.wordList()[i]}
-          imgUrl="https://dynamicmedia.zuza.com/zz/m/original_/0/d/0df2dd8b-2a20-4a12-bfbe-8b6144760e9c/obsolete_cover___Gallery.jpg"
-        />
-      );
-    }
-    return (
-      <div className="category">
-        <div className="container Category-main">
-          <div className="row">{rows} </div>
+
+for (var i = 0; i < this.state.wordNames.length; i++) {
+    rows.push(<EachCategory2 className="col-xly-1" name={ this.state.wordNames[i]} 
+    imgUrl="https://dynamicmedia.zuza.com/zz/m/original_/0/d/0df2dd8b-2a20-4a12-bfbe-8b6144760e9c/obsolete_cover___Gallery.jpg"/>
+   );
+   
+}
+
+return (<div className="category">
+<div className="container Category-main">
+    <div className="row">{rows}       </div>
+    
         </div>
-        <a
-          href={"/AddWord/" + this.props.match.params.catname}
-          className="btn btn-secondary"
-        >
-          {" "}
-          Add Word
-        </a>
-      </div>
-    );
+        <a href= {"/AddWord/" + this.props.match.params.catname} className="btn btn-secondary"> Add Word</a>
+      </div>);
+
   }
+  
 }
 
 export default singleCategory;
