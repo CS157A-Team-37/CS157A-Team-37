@@ -18,12 +18,30 @@ router.get("/words", function(req, res, next) {
 
 
 router.get("/words/:word_name", function(req, res, next) {
+  console.log("reached wordq");
   Word.findAll({
     where: {
       name: req.params.word_name
     }
   })
     .then(word => {
+      res.json(word);
+    })
+    .catch(err => {
+      res.send("error: " + err);
+    });
+});
+
+router.get("/wordsgetid/:wordID", function(req, res, next) {
+  console.log("reached wordsgetid");
+  Word.findAll({
+    where: {
+      id: req.params.wordID
+    }
+  })
+    .then(word => {
+      console.log("reached word");
+      console.log("name of word:" + word[0].name);
       res.json(word);
     })
     .catch(err => {

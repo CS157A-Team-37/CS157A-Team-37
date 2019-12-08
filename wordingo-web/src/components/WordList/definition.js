@@ -22,7 +22,7 @@ class Definition extends React.Component {
       <>
         <Card bg="light" style={cardStyling}>
           <Card.Body>
-            {/* Definition */}
+           a def here: {this.props.def}
             <Card.Title>
               Clipper ahoy bilged on her anchor Sink me Blimey quarterdeck
               gabion take a caulk spirits belaying pin. Hornswaggle wench strike

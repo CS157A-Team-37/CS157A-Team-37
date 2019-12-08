@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import Wordlist from "../WordList/wordList";
+import Wordlist from "../WordList/WordList";
 
 //import service
 import HttpService from "../../services/http-service";
@@ -9,7 +9,10 @@ const http = new HttpService();
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { users: [] };
+    this.state = { users: [], 
+                    word: [{name: ""}],
+                  cats: [{name: ""}],
+                wordID: []}
 
     //Bind Functions
     this.getUsers = this.getUsers.bind(this);
@@ -18,8 +21,41 @@ class Home extends React.Component {
 
   componentDidMount() {
     console.log("MOUNTED");
-    this.getUsers();
+    this.findCategories();
   }
+
+  findWord = () => {
+    var self = this;
+    http.getOneWord("second").then(
+      data => {
+        this.setState({ word: data });
+        
+    console.log(data);
+      },
+      err => {}
+    );
+    console.log("COMPLETED FIND WORD");
+    
+  };
+  findCategories = () => {
+    var self = this;
+    console.log("test");
+    http.getCategoryWordIDs("cat1").then(
+      data => {
+        this.setState({ cats: data });
+        for(var i = 0; i < data.length; i++)
+        {
+          console.log("Yeah:" + data[i].wordID);
+          this.state.wordID.push(data[i].wordID);
+          console.log("Yeah:" + this.state.wordID[i]);
+        }
+    console.log("data: " + data);
+      },
+      err => {}
+    );
+    console.log("COMPLETED FIND WORD");
+    
+  };
 
   getUsers = () => {
     var self = this;
@@ -49,7 +85,8 @@ class Home extends React.Component {
         <div className="lander">
           <h1>Wordingo Home </h1>
 
-          <div className="row">{this.userList()}</div>
+          <div className="row">here: { console.log("Yeah:" + this.state.wordID[0])}</div>
+
           <p></p>
         </div>
       </div>

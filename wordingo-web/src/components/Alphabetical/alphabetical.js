@@ -1,19 +1,11 @@
 import React from "react";
 import "./alphabetical.css";
-import "../Alphabetical/wordlist";
+import "../Alphabetical/wordlist"
 import Wordlist from "../Alphabetical/wordlist";
 import AlphabetNav from "./alphabetNav";
 
-import { BrowserRouter, Route, Link } from "react-router-dom";
-
 import HttpService from "../../services/http-service";
-const http = new HttpService();
-// var alphabetArray="ABCDEFGHIGKLMNOPQRSTUVWXYZ"
-const alphabetical = ({ match }) => (
-  <div>
-    <h3>{match.params.letter} </h3>
-  </div>
-);
+const http=new HttpService();
 
 class Alphabetical extends React.Component {
   constructor(props) {
@@ -29,7 +21,6 @@ class Alphabetical extends React.Component {
     console.log("MOUNTED");
     this.getWords();
   }
-
   getWords = () => {
     var self = this;
     http.getWords().then(
@@ -52,14 +43,17 @@ class Alphabetical extends React.Component {
     return list;
   };
 
-  render() {
+  render(){
     return (
       <div className="alphabetical">
         <AlphabetNav />
-        <Wordlist allwords={this.state.words} />
+        <Wordlist allwords={this.state.words}/>
+        
       </div>
     );
+
   }
+  
 }
 
 export default Alphabetical;

@@ -10,9 +10,8 @@ import test from "./Test/test.js";
 import word from "./WordList/word";
 import AddWord from "./AddWord/AddWord";
 import AddDefinition from "./AddDefinition/AddDefinition";
-import alphWordList from "./Alphabetical/wordlist";
 
-import WordList from "./WordList/wordList";
+import WordList from "./WordList/WordList";
 
 export default function Routes() {
   return (
@@ -21,12 +20,14 @@ export default function Routes() {
       <Route path="/login" component={login} />
       <Route path="/alphabetical" component={alphabetical} />
       <Route path="/category" component={category} />
+    
+
       <Route path="/singleCategory/:catname" component={singleCategory} />
       <Route path="/AddWord/:catname" component={AddWord} />
       <Route path="/AddDefinition" component={AddDefinition} />
+    
       {/*This is where the test Word/Definitions is*/}
       <Route path="/word-definition/:word_name" component={WordList} />{" "}
-      <Route path="/alphabetical/:letter" component={alphWordList} />
     </Switch>
   );
 }

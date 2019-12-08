@@ -59,13 +59,14 @@ class WordList extends React.Component {
     console.log("IN FIND DEFINITIONS");
     console.log(this.state.word.length);
     var self = this;
-    if (this.state.word.length == 1) {
+
+    if (this.state.word.length == 0) {
       console.log("IN FIND DEFINITIONS IFFFF");
-      console.log(this.state.word[0].id);
-      http.getDefinitionsForOneWord(this.state.word.id).then(
+      console.log("1");
+      http.getDefinitionsForOneWord("1").then(
         data => {
           console.log("SET STATE FOR DEFINITIONS");
-
+          console.log("def: " + data[0].text)
           this.setState({ definitions: data });
         },
         err => {}

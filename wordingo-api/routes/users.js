@@ -9,6 +9,7 @@ router.use(cors());
 router.get("/users", function(req, res, next) {
   Users.findAll()
     .then(users => {
+      console.log("here in users");
       res.json(users);
     })
     .catch(err => {
