@@ -52,7 +52,7 @@ class navbar extends React.Component {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           
-          <Nav.Link href="/alphabetical">Alphabetical</Nav.Link>
+          <Nav.Link href="/alphabetical/All">Alphabetical</Nav.Link>
           <Nav.Link href="/Category">Categories</Nav.Link>
           {this.dispLogout()}
         </Nav>

@@ -5,6 +5,7 @@ import login from "./Login/login.js";
 import alphabetical from "./Alphabetical/alphabetical";
 import category from "./Category/category";
 
+import AddUser from "./AddUser/AddUser"
 import singleCategory from "./Category/singleCategory";
 import test from "./Test/test.js";
 import word from "./WordList/word";
@@ -19,10 +20,11 @@ export default function Routes() {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/login" component={login} />
+      <Route path="/alphabetical/:letter" component={alphabetical} />
       <Route path="/alphabetical" component={alphabetical} />
       <Route path="/category" component={category} />
-    
 
+      <Route path="/AddUser" component={AddUser} />
       <Route path="/singleCategory/:catname" component={singleCategory} />
       <Route path="/AddWord/:catname" component={AddWord} />
       <Route path="/AddDefinition/:wordid/:wordName" component={AddDefinition} />
