@@ -52,10 +52,13 @@ ___________________________________________________
 
 	git commit -m "(my commit will)<enter message here."
 
+	
+- repeat (add and commit) as many times as needed. Could be semi-frequent / when reaching a "checkpoint"
 
 
 
-4. Push changes to GitHub
+
+4. Push changes to GitHub (when your changes are in a working/semi-working state)
 
  
 
