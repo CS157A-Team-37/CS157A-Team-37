@@ -17,10 +17,41 @@ router.get("/users", function(req, res, next) {
     });
 });
 
+router.get("/users/:username", function(req, res, next) {
+  Users.findAll({
+    where: {
+      username: req.params.username
+    }
+  })
+    .then(users => {
+      console.log("here in users");
+      res.json(users);
+    })
+    .catch(err => {
+      res.send("error: " + err);
+    });
+});
+
+
+router.get("/usersID/:id", function(req, res, next) {
+  Users.findAll({
+    where: {
+      id:  req.params.id
+    }
+  })
+    .then(users => {
+      console.log("here in users, id is " + req.params.id);
+      res.json(users);
+    })
+    .catch(err => {
+      res.send("error: " + err);
+    });
+});
+
 router.post("/users/add", function(req, res, next) {
   if (!req.body.username || !req.body.email || !req.body.password) {
     res.status(400);
-    res.json({ error: "Bad Data2" });
+    res.json({ error: "Bad Data" });
   } else {
     Users.create(req.body)
       .then(data => {

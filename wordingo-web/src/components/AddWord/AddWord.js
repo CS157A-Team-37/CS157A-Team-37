@@ -12,13 +12,11 @@ class AddWord extends React.Component {
   constructor(props) {
     super(props);
     this.state = { users: [], 
-                    word: [{name:''}],
-                    returnWord:[{name:'emp'}],
+                    word: [{'id':'11',name:''}],
                     categories: [], 
                      wordName: '',
                      syllables: '',
                      phoneticSpelling: '',
-                     //id: 0
                     };
 
     //Bind Functions
@@ -66,13 +64,10 @@ class AddWord extends React.Component {
       
       
     );
-
+    this.props.history.push(`/word-definition/` + this.state.wordName)
   };
 
-  caller = () => {
-    this.addWords();
-    
-  };
+
 
   findWord = () => {
     var self = this;

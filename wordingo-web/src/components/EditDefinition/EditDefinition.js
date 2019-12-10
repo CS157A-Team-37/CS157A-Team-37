@@ -1,5 +1,5 @@
 import React from "react";
-import "./AddDefinition.css";
+import "./EditDefinition.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,7 +8,7 @@ import HttpService from "../../services/http-service";
 const http = new HttpService();
 
 
-class AddWord extends React.Component {
+class EditDefinition extends React.Component {
   constructor(props) {
     super(props);
     this.state = { users: [], 
@@ -26,27 +26,22 @@ class AddWord extends React.Component {
 
     console.log(this.state.definition);
   }
+  editDefinition = () => {
 
-
-  addDefinition = () => {
-    console.log(this.state.definition);
     var self = this;  
-    console.log("word id:/" +this.props.match.params.wordid + "/");
-    http.addDefinition({
+    http.updateDefinitionText({
       "text": this.state.definition,
-      "numberOfUpvotes": '0',
-      "numberOfDownvotes": '0',
-      "wordID": this.props.match.params.wordid,
-      "userID": document.cookie.replace(/(?:(?:^|.*;\s*)id\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+      "id": this.props.match.params.defId
     }).then(
-      data => {     
-        this.props.history.push(`/word-definition/` + this.props.match.params.wordName)
+      data => {
+        this.setState({ words: data });
+        //this.props.history.push(`/word-definition/` + this.props.match.params.wordName)
+     
       },
-      err => {},
-      
+      err => {}
     );
-    
   };
+
 
   render() {
     const firstUser = this.state.users[0];
@@ -54,7 +49,7 @@ class AddWord extends React.Component {
     return (
       <Container>
       <div className="lander">
-    <h1>Add Definition</h1>
+    <h1>Edit Definition</h1>
   </div>
       <Form>
         <Form.Group>
@@ -63,10 +58,10 @@ class AddWord extends React.Component {
           </Form.Text>
         </Form.Group>
       
-        <button name="data" type="button" onClick={this.addDefinition}>Submit</button>
+        <button name="data" type="button" onClick={this.editDefinition}>Submit</button>
       </Form>
     </Container>
     );
   }
 }
-export default AddWord
+export default EditDefinition

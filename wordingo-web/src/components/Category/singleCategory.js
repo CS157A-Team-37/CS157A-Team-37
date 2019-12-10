@@ -25,6 +25,7 @@ class singleCategory extends React.Component{
   }
 
   componentDidMount() {
+    console.log("a cookie in singlecategory: " + document.cookie + "/");
     console.log("MOUNTED");
     console.log(this.props);
     this.getUsers();
@@ -33,6 +34,17 @@ class singleCategory extends React.Component{
     this.findCategories();
   }
 
+  dispAddWord =() =>  {
+    console.log("document cookie: " + document.cookie);
+    if(document.cookie != "" && document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")!= "" )
+      {
+          return  <a href= {"/AddWord/" + this.props.match.params.catname} className="btn btn-secondary"> Add Word</a>
+     
+      }
+      else
+      return ;
+    
+  }
   findCategories = () => {
     var self = this;
     http.getCategoryWordIDs(this.props.match.params.catname).then(
@@ -127,7 +139,6 @@ for (var i = 0; i < this.state.wordNames.length; i++) {
     rows.push(<EachCategory2 className="col-xly-1" name={ this.state.wordNames[i]} 
     imgUrl="https://dynamicmedia.zuza.com/zz/m/original_/0/d/0df2dd8b-2a20-4a12-bfbe-8b6144760e9c/obsolete_cover___Gallery.jpg"/>
    );
-   
 }
 
 return (<div className="category">
@@ -135,8 +146,8 @@ return (<div className="category">
     <div className="row">{rows}       </div>
     
         </div>
-        <a href= {"/AddWord/" + this.props.match.params.catname} className="btn btn-secondary"> Add Word</a>
-      </div>);
+        {this.dispAddWord()}
+       </div>);
 
   }
   
