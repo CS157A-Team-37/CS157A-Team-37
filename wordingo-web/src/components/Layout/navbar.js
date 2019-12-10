@@ -35,7 +35,7 @@ class navbar extends React.Component {
     console.log("document cookie: " + document.cookie);
     if(document.cookie != "" && document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")!= "" )
       {
-          return <Nav.Link href="/" onClick={this.logout}>Logout</Nav.Link>;
+          return <Nav.Link onClick={this.logout}>Logout</Nav.Link>;
           
       }
       else
@@ -52,7 +52,7 @@ class navbar extends React.Component {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           
-          <Nav.Link href="/alphabetical/All">Alphabetical</Nav.Link>
+          <Nav.Link href="/alphabetical">Alphabetical</Nav.Link>
           <Nav.Link href="/Category">Categories</Nav.Link>
           {this.dispLogout()}
         </Nav>

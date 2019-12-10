@@ -21,8 +21,7 @@ class Definition extends React.Component {
 
   dispUserFunctions =() =>  {
     console.log("document cookie in dispUserFunctions: " + document.cookie);
-    if(document.cookie != "" && document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")== this.state.username )
-      {
+    if((document.cookie != "" && document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")== this.state.username )||document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")== "ADMIN")  {
           return <div> <a href= {"/EditDefinition/" + this.props.def.id} className="btn btn-secondary"> Edit</a>  <a onClick={this.deleteDefinition}   className="btn btn-secondary"> Delete</a> </div>   
       }
       else

@@ -93,6 +93,17 @@ class Home extends React.Component {
     return rows;
   };
 
+  dispAddCategory =() =>  {
+    console.log("document cookie: " + document.cookie);
+    if(document.cookie != "" && document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")== "ADMIN" )
+      {
+          return  <a href= {"/addCategory/"} className="btn btn-secondary"> Add Category</a>
+     
+      }
+      else
+      return ;
+    
+  }
 
   render() {
     const firstUser = this.state.users[0];
@@ -108,6 +119,7 @@ return (<div className="category">
 <div className="container Category-main">
     <div className="row">{rows}       </div>
  </div>
+ {this.dispAddCategory()}
       </div>);
   }
   

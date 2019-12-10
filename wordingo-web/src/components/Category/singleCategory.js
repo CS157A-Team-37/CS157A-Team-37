@@ -45,6 +45,31 @@ class singleCategory extends React.Component{
       return ;
     
   }
+  dispDeleteCategory =() =>  {
+    console.log("document cookie: " + document.cookie);
+    if(document.cookie != "" && document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")== "ADMIN" )
+      {
+          return    <a className="btn btn-secondary" onClick={this.deleteCategory}> Delete Category</a>
+     
+      }
+      else
+      return ;
+    
+  }
+
+  deleteCategory = () => {
+    var self = this;  
+    http.deleteCategory({
+      "name": this.props.match.params.catname
+    }).then(
+      data => {
+        this.setState({ words: data });
+        this.props.history.push(`/category`)
+      },
+      err => {}
+    );
+  };
+
   findCategories = () => {
     var self = this;
     http.getCategoryWordIDs(this.props.match.params.catname).then(
@@ -147,6 +172,8 @@ return (<div className="category">
     
         </div>
         {this.dispAddWord()}
+        {this.dispDeleteCategory()}
+
        </div>);
 
   }
