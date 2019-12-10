@@ -20,7 +20,7 @@ router.get("/users", function(req, res, next) {
 router.post("/users/add", function(req, res, next) {
   if (!req.body.username || !req.body.email || !req.body.password) {
     res.status(400);
-    res.json({ error: "Bad Data2" });
+    res.json({ error: "Bad Data" });
   } else {
     Users.create(req.body)
       .then(data => {
