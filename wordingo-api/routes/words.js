@@ -64,4 +64,15 @@ router.post("/words/add", function(req, res, next) {
   }
 });
 
+router.delete("/words/delete", function (req, res, next) {
+  console.log("reached delete");
+  Word.destroy(
+    {where: {name: req.body.name, id: req.body.wordID} }
+  )
+  .then(function(rowsUpdated) {
+    res.json(rowsUpdated)
+  })
+  .catch(next)
+ })
+
 module.exports = router;

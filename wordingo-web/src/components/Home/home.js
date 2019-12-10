@@ -1,5 +1,5 @@
 import React from "react";
-import "../Home/home.css";
+import "./home.css";
 import Wordlist from "../WordList/WordList";
 
 //import service
@@ -9,12 +9,10 @@ const http = new HttpService();
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      users: [],
-      word: [{ name: "" }],
-      cats: [{ name: "" }],
-      wordID: []
-    }
+    this.state = { users: [], 
+                    word: [{name: ""}],
+                  cats: [{name: ""}],
+                wordID: []}
 
     //Bind Functions
     this.getUsers = this.getUsers.bind(this);
@@ -24,6 +22,8 @@ class Home extends React.Component {
   componentDidMount() {
     console.log("MOUNTED");
     this.findCategories();
+
+    console.log("a cookie in home: " + document.cookie);
   }
 
   findWord = () => {
@@ -31,13 +31,13 @@ class Home extends React.Component {
     http.getOneWord("second").then(
       data => {
         this.setState({ word: data });
-
-        console.log(data);
+        
+    console.log(data);
       },
-      err => { }
+      err => {}
     );
     console.log("COMPLETED FIND WORD");
-
+    
   };
   findCategories = () => {
     var self = this;
@@ -45,17 +45,18 @@ class Home extends React.Component {
     http.getCategoryWordIDs("cat1").then(
       data => {
         this.setState({ cats: data });
-        for (var i = 0; i < data.length; i++) {
+        for(var i = 0; i < data.length; i++)
+        {
           console.log("Yeah:" + data[i].wordID);
           this.state.wordID.push(data[i].wordID);
           console.log("Yeah:" + this.state.wordID[i]);
         }
-        console.log("data: " + data);
+    console.log("data: " + data);
       },
-      err => { }
+      err => {}
     );
     console.log("COMPLETED FIND WORD");
-
+    
   };
 
   getUsers = () => {
@@ -64,7 +65,7 @@ class Home extends React.Component {
       data => {
         this.setState({ users: data });
       },
-      err => { }
+      err => {}
     );
   };
   userList = () => {
@@ -79,28 +80,17 @@ class Home extends React.Component {
     return list;
   };
   render() {
-    const stylingforHeader ={
-      fontSize:"200px",
-      color:"black"
-      
-    }
-
-    const stylingforParagraph ={
-      fontSize:"25px",
-      color:"black",
-      fontWeight: 'bold',
-      textAlign: "left",
-      margin:40,
-  
-    }
-
-    
+    const firstUser = this.state.users[0];
 
     return (
       <div className="Home">
-        <div className="jumbotron">
-          <h1 className="display-4" style={stylingforHeader}>Wordingo</h1>
-          <p className="lead" style={stylingforParagraph}>Wordingo is a user-defined dictionary application. This application will allow users to register accounts, search a database for word definitions, and add or edit their own words in the database. Search methods will include browsing alphabetically and via specific word lookup. Wordingo will employ a clean and easy to navigate GUI. GUI elements will include a search bar and a navigation sidebar.</p>
+        <div className="lander">
+          <h1>Wordingo Home </h1>
+   
+               <div className="row">Now Logged in as {
+               document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")}</div>
+
+          <p></p>
         </div>
       </div>
     );
