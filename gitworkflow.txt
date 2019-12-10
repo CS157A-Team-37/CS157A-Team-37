@@ -98,6 +98,9 @@ Usual Next Steps:
 
 6. Delete the feature branch that you made, if you successfully merged it into the master/dev
 
+	git branch -d <branch_name>		//removes locally
+	git push origin --delete <the_remote_branch_name>	//removes in github
+
 7. Pull changes from repository into your local workspace
 
 	git pull
