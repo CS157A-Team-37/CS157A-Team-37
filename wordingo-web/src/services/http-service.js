@@ -12,24 +12,6 @@ class HttpService {
     return promise;
   };
 
-  //Add users function here 
-  addUsers = (data) => {
-    var promise = new Promise((resolve, reject) => {
-      fetch("http://localhost:5000/api/users/add", 
-      {method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        "Access-Control-Origin": "*"
-      },
-      body: JSON.stringify(data)}).then(response => {
-        resolve(response.json());
-      });
-    });
-
-    
-    return promise;
-  };
-
   getOneWord = word_name => {
     var promise = new Promise((resolve, reject) => {
       fetch(`http://localhost:5000/api/words/${word_name}`).then(response => {
@@ -89,6 +71,7 @@ class HttpService {
   };
   
   addCategory = (data) => {
+    console.log("add category entered, with data: " + data.name);
     var promise = new Promise((resolve, reject) => {
       fetch("http://localhost:5000/api/categories/add", 
       {method: 'POST',
@@ -97,6 +80,40 @@ class HttpService {
         "Access-Control-Origin": "*"
       },
       body: JSON.stringify(data)}).then(response => {
+        resolve(response.json());
+      });
+    });
+
+    return promise;
+  };
+  addUsers = (data) => {
+    var promise = new Promise((resolve, reject) => {
+      fetch("http://localhost:5000/api/users/add", 
+      {method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        "Access-Control-Origin": "*"
+      },
+      body: JSON.stringify(data)}).then(response => {
+        resolve(response.json());
+      });
+    });
+
+    
+    return promise;
+  };
+
+  deleteCategory = (data) => {
+    console.log("data in delete is  " + data.name);
+    var promise = new Promise((resolve, reject) => {
+      fetch("http://localhost:5000/api/categories/delete", 
+      {method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        "Access-Control-Origin": "*"
+      },
+      body: JSON.stringify(data)}).then(response => {
+        console.log("here in update http-server response")    
         resolve(response.json());
       });
     });
@@ -120,6 +137,24 @@ class HttpService {
       fetch(`http://localhost:5000/api/wordsgetid/${wordID}`).then(response => {
         console.log("wordID is: " + wordID);
         console.log("response is: " + response.name);
+        resolve(response.json());
+      });
+    });
+
+    return promise;
+  };
+
+  deleteWord = (data) => {
+  
+    var promise = new Promise((resolve, reject) => {
+      fetch("http://localhost:5000/api/categories/deleteword", 
+      {method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        "Access-Control-Origin": "*"
+      },
+      body: JSON.stringify(data)}).then(response => {
+        console.log("here in update http-server response")    
         resolve(response.json());
       });
     });
@@ -193,6 +228,8 @@ class HttpService {
 
     return promise;
   };
+  
+
 
   deleteDefinition = (data) => {
   
@@ -243,5 +280,6 @@ class HttpService {
     return promise;
   };
 }
+
 
 export default HttpService; //equal to module.exports ==....

@@ -89,7 +89,30 @@ class WordList extends React.Component {
     console.log("COMPLETED FIND WORD");
 
   };
+  deleteWord = () => {
+    var self = this;  
+    http.deleteWord({
+      "name": this.state.word[0].name,
+      "wordID": this.state.word[0].id
+    }).then(
+      data => {
+        this.setState({ words: data });
+        window.location.reload(false)
+      },
+      err => {}
+    );
+  };
 
+  dispUserFunctions =() =>  {
+    console.log("document cookie in dispUserFunctions: " + document.cookie);
+    if(document.cookie != "" && document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")== "ADMIN" )
+      {
+          return <div> <a onClick={this.deleteWord}   className="btn btn-secondary"> Delete</a> </div>   
+      }
+      else
+      return ;
+    
+  }
   render() {
     //! IMPORTANT TO KNOW... NEED A CONDITION IF WORD IS EMPTY @ START
     if (this.state.word.length == 0) {
@@ -111,7 +134,7 @@ class WordList extends React.Component {
 
           {/* Definitions for this word */}
           {rows}
-
+          {this.dispUserFunctions()}
          {this.dispAddDefinition()}</Container>
       );
     }

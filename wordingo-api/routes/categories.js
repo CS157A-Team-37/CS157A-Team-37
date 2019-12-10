@@ -40,6 +40,7 @@ router.post("/categories/add", function(req, res, next) {
     res.status(400);
     res.json({ error: "Bad Data" });
   } else {
+    console.log("here in add categories");
     Category.create(req.body)
       .then(data => {
         res.send(data);
@@ -49,5 +50,26 @@ router.post("/categories/add", function(req, res, next) {
       });
   }
 });
+
+
+router.delete("/categories/delete", function (req, res, next) {
+  Category.destroy(
+    {where: {name: req.body.name} }
+  )
+  .then(function(rowsUpdated) {
+    res.json(rowsUpdated)
+  })
+  .catch(next)
+ })
+
+ router.delete("/categories/deleteword", function (req, res, next) {
+  Category.destroy(
+    {where: {wordID: req.body.wordID} }
+  )
+  .then(function(rowsUpdated) {
+    res.json(rowsUpdated)
+  })
+  .catch(next)
+ })
 
 module.exports = router;

@@ -55,7 +55,7 @@ class AddWord extends React.Component {
         this.id = data.id;
         console.log("heretest:" +this.id);
         http.addCategory({
-          "name": this.props.match.params.catname,
+          "name": "nameof",
           "wordID": data.id
         })
       },
@@ -87,7 +87,7 @@ class AddWord extends React.Component {
     console.log(this.props.match.params.catname);
     var self = this;
     http.addCategory({
-      "name": this.props.match.params.catname,
+      "name": "name",
       "wordID": this.state.word.id
     }).then(
       data => {
