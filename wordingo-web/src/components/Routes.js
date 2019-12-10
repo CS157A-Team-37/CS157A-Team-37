@@ -11,6 +11,7 @@ import word from "./WordList/word";
 import AddWord from "./AddWord/AddWord";
 import AddDefinition from "./AddDefinition/AddDefinition";
 import alphWordList from "./Alphabetical/wordlist";
+import AddUser from "./AddUser/AddUser"
 
 import WordList from "./WordList/WordList";
 
@@ -22,6 +23,7 @@ export default function Routes() {
       <Route path="/alphabetical" component={alphabetical} />
       <Route path="/category" component={category} />
       <Route path="/singleCategory/:catname" component={singleCategory} />
+      <Route path="/AddUser" component={AddUser} />
       <Route path="/AddWord/:catname" component={AddWord} />
       <Route path="/AddDefinition" component={AddDefinition} />
       {/*This is where the test Word/Definitions is*/}

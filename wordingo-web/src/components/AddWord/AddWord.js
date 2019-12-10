@@ -12,13 +12,13 @@ class AddWord extends React.Component {
   constructor(props) {
     super(props);
     this.state = { users: [], 
-                    word: [{'id':'11',name:''}],
+                    word: [{name:''}],
                     returnWord:[{name:'emp'}],
                     categories: [], 
                      wordName: '',
                      syllables: '',
                      phoneticSpelling: '',
-                     id: 0
+                     //id: 0
                     };
 
     //Bind Functions

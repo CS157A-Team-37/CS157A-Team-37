@@ -21,6 +21,24 @@ class HttpService {
 
     return promise;
   };
+  
+  //Add users function here 
+  addUsers = (data) => {
+    var promise = new Promise((resolve, reject) => {
+      fetch("http://localhost:5000/api/users/add", 
+      {method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        "Access-Control-Origin": "*"
+      },
+      body: JSON.stringify(data)}).then(response => {
+        resolve(response.json());
+      });
+    });
+
+    
+    return promise;
+  };
 
   addWords = (data) => {
     var promise = new Promise((resolve, reject) => {
