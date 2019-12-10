@@ -20,9 +20,6 @@ class AddWord extends React.Component {
     //Bind Functions
   }
 
-   shoot() {
-    alert("Great Shot!");
-  }
   myChangeHandler = (event) => {
 
     this.setState({definition: event.target.value});
@@ -33,19 +30,24 @@ class AddWord extends React.Component {
 
   addDefinition = () => {
     console.log(this.state.definition);
-    var self = this;
+    var self = this;  
+    console.log("word id:/" +this.props.match.params.wordid + "/");
     http.addDefinition({
       "text": this.state.definition,
       "numberOfUpvotes": '0',
       "numberOfDownvotes": '0',
-      "wordID": '1',
+      "wordID": this.props.match.params.wordid,
       "userID": '1'
     }).then(
       data => {
-        this.setState({ words: data });
+
+     
+        this.props.history.push(`/word-definition/` + this.props.match.params.wordName)
       },
-      err => {}
+      err => {},
+      
     );
+    
   };
 
   render() {
@@ -62,8 +64,8 @@ class AddWord extends React.Component {
           <Form.Text className="text-muted">
           </Form.Text>
         </Form.Group>
-        <button onClick={this.addDefinition}>Submit</button>
-   
+      
+        <button name="data" type="button" onClick={this.addDefinition}>Submit</button>
       </Form>
     </Container>
     );

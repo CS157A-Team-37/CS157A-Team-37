@@ -28,13 +28,12 @@ class WordList extends React.Component {
     // this.findDefinitions();
 
     //Bind Methods
-    this.findWord = this.findWord.bind(this);
     this.findDefinitions = this.findDefinitions.bind(this);
     this.setWordAndDefinition = this.setWordAndDefinition.bind(this);
   }
 
   componentDidMount() {
-    this.setWordAndDefinition();
+    this.findDefinitions(0);
   }
 
   componentDidUpdate() {}
@@ -43,34 +42,40 @@ class WordList extends React.Component {
     this.findWord(this.findDefinitions);
   };
 
-  findWord = getDefinitions => {
+
+  findDefinitions = (count) => {
+    console.log("IN FIND DEFINITIONS");
+
     var self = this;
     http.getOneWord(this.state.urlParam).then(
       data => {
+        if(data[0] != null)
+        {
         this.setState({ word: data });
+        console.log("word id for this word:" + this.state.word[0].id);
+        if (this.state.word.length == 1) {
+          console.log("IN FIND DEFINITIONS IFFFF");
+          http.getDefinitionsForOneWord(this.state.word[0].id).then(
+            data2 => {
+              console.log("SET STATE FOR DEFINITIONS");
+              if(data2.length > 0)
+                console.log("def: " + data2[0].text)
+              this.setState({ definitions: data2 });
+            },
+            err => {}
+          );
+        }
+      }
+      else
+      {
+        if(count < 100)
+           this.findDefinitions(count + 1);
+      }
       },
       err => {}
-    );
-    getDefinitions();
+    )
     console.log("COMPLETED FIND WORD");
-  };
 
-  findDefinitions = () => {
-    console.log("IN FIND DEFINITIONS");
-    console.log(this.state.word.length);
-    var self = this;
-    if (this.state.word.length == 1) {
-      console.log("IN FIND DEFINITIONS IFFFF");
-      console.log(this.state.word[0].id);
-      http.getDefinitionsForOneWord(this.state.word.id).then(
-        data => {
-          console.log("SET STATE FOR DEFINITIONS");
-
-          this.setState({ definitions: data });
-        },
-        err => {}
-      );
-    }
   };
 
   render() {
@@ -78,6 +83,12 @@ class WordList extends React.Component {
     if (this.state.word.length == 0) {
       return <div></div>;
     } else {
+      var rows = [];
+      for (var i = 0; i < this.state.definitions.length; i++) {
+          rows.push(<Row>
+            <Definition def={this.state.definitions[i]} />
+          </Row>);      
+      }
       return (
         <Container className="p-3">
           {/* Word name and details */}
@@ -87,12 +98,9 @@ class WordList extends React.Component {
           <hr />
 
           {/* Definitions for this word */}
-          <Row>
-            <Definition def={this.state.def} />
-          </Row>
-          <Row>
-            <Definition />
-          </Row>
+          {rows}
+
+         <a href = {"/AddDefinition/" + this.state.word[0].id + "/" + this.state.word[0].name} a className="btn btn-secondary"> Add Definition</a>
         </Container>
       );
     }

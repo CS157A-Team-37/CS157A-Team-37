@@ -11,7 +11,7 @@ export default function login() {
       <Form>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" id="exampleInputEmail1" aria-describedby="emailHelp"placeholder="Enter email" />
+          <Form.Control type="email" placeholder="Enter email" />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
@@ -27,7 +27,6 @@ export default function login() {
         <Button variant="primary" type="submit">
           Submit
         </Button>
-        <Button href= {"/AddUser"} className="btn btn-secondary btn-space"> Sign Up </Button>
       </Form>
     </Container>
   );
