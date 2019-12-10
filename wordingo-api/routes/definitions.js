@@ -15,13 +15,9 @@ router.get("/definitions", function(req, res, next) {
       res.send("error: " + err);
     });
 });
-//req.params.word_id
+
 // GET Definitions for a certain word
 router.get("/definitions/word-:word_id", function(req, res, next) {
-  console.log("got here!");
-  console.log("word id:" + req.params.word_id +"/");
-  var con = String(req.params.word_id);
-  console.log("word id:" + con +"/");
   Definition.findAll({
     where: {
       wordID: req.params.word_id
@@ -29,7 +25,6 @@ router.get("/definitions/word-:word_id", function(req, res, next) {
   })
     .then(definitions => {
       res.json(definitions);
-
     })
     .catch(err => {
       res.send("error: " + err);
@@ -56,19 +51,5 @@ router.post("/definitions/add", function(req, res, next) {
       });
   }
 });
-
-router.put("/definitions/update", function (req, res, next) {
-  console.log("Here in update");
-  console.log("text in update:" + req.body.text );
-  console.log("text in update:" + req.body.numberOfUpvotes );
-  Definition.update(
-    {numberOfUpvotes: req.body.numberOfUpvotes,
-    numberOfDownvotes: req.body.numberOfDownvotes},{where: {text: req.body.text} }
-  )
-  .then(function(rowsUpdated) {
-    res.json(rowsUpdated)
-  })
-  .catch(next)
- })
 
 module.exports = router;

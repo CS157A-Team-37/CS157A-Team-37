@@ -21,6 +21,24 @@ class HttpService {
 
     return promise;
   };
+  
+  //Add users function here 
+  addUsers = (data) => {
+    var promise = new Promise((resolve, reject) => {
+      fetch("http://localhost:5000/api/users/add", 
+      {method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        "Access-Control-Origin": "*"
+      },
+      body: JSON.stringify(data)}).then(response => {
+        resolve(response.json());
+      });
+    });
+
+    
+    return promise;
+  };
 
   addWords = (data) => {
     var promise = new Promise((resolve, reject) => {
@@ -80,20 +98,17 @@ class HttpService {
 
   getDefinitionsForOneWord = word_id => {
     var promise = new Promise((resolve, reject) => {
-      console.log("word id in http-service: " + word_id);
-      fetch(`http://localhost:5000/api/definitions/word-${word_id}`).then(
+      fetch(`http://localhost:5000/api/definitions/word-:${word_id}`).then(
         response => {
-          console.log("test in response in http-service: " + response.wordID);
           resolve(response.json());
         }
       );
     });
-   
+
     return promise;
   };
-
-
-    addDefinition = (data) => {
+      
+  addDefinition = (data) => {
     var promise = new Promise((resolve, reject) => {
       fetch("http://localhost:5000/api/definitions/add", 
       {method: 'POST',
@@ -108,24 +123,7 @@ class HttpService {
 
     return promise;
   };
-
-  updateDefinition = (data) => {
   
-    var promise = new Promise((resolve, reject) => {
-      fetch("http://localhost:5000/api/definitions/update", 
-      {method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        "Access-Control-Origin": "*"
-      },
-      body: JSON.stringify(data)}).then(response => {
-        console.log("here in update http-server response")    
-        resolve(response.json());
-      });
-    });
-
-    return promise;
-  };
   getDefinitions = () => {
     var promise = new Promise((resolve, reject) => {
       fetch("http://localhost:5000/api/definitions").then(response => {
@@ -144,6 +142,7 @@ class HttpService {
         resolve(response.json());
       });
     });
+    console.log("category promise is: " + promise);
     return promise;
   };
 
