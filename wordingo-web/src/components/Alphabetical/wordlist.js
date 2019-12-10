@@ -37,8 +37,9 @@ class Wordlist extends Component {
 
     let listToMap = [...this.props.allwords];
     console.log(listToMap);
+    
 
-    if (this.props.letterClicked != undefined) {
+    if (this.props.letterClicked != "All") {
       listToMap = this.props.allwords.filter(word => {
         return word.name[0] === this.props.letterClicked;
       });

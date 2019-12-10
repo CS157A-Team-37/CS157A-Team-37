@@ -16,7 +16,7 @@ export default props => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/login">Login</Nav.Link>
-          <Nav.Link href="/alphabetical">Alphabetical</Nav.Link>
+          <Nav.Link href="/alphabetical/All">Alphabetical</Nav.Link>
           <Nav.Link href="/Category">Categories</Nav.Link>
 
         </Nav>

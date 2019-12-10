@@ -10,6 +10,7 @@ class AlphabetNav extends Component {
   }
   list = () => {
     let alphArray = [
+      "All",
       "A",
       "B",
       "C",
