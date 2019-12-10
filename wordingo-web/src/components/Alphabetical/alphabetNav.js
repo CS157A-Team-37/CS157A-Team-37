@@ -37,8 +37,20 @@ class AlphabetNav extends Component {
       "Y",
       "Z"
     ];
+
+      const letterStyling = {
+      backgroundColor: "white",
+      padding: "10px 20px",
+      textAlign: "enter",
+      fontSize:"1.5rem",
+      textDecoration: "",
+      display: "inline-block",
+      boxShadow: "0px 0px 3px 2px rgba(255,185,121,0.99)"
+    }
+
+
     const list = alphArray.map(letter => (
-      <a class="nav-link active" href="/alphabetical/:{letter}">
+      <a class="nav-link active" href={"/alphabetical/" + letter} style={letterStyling}>
         {letter}
       </a>
     ));
@@ -47,9 +59,17 @@ class AlphabetNav extends Component {
   };
 
   render() {
+
+    const navStyling = {
+      backgroundColor: "white",
+      color: "black",
+      padding: "10px 20px",
+      margin: "auto"
+    }
+
     return (
-      <div className="container">
-        <nav class="nav">{this.list()}</nav>
+      <div className="container-fluid" style={{marginRight:"2rem"}}>
+        <nav class="nav justify-content-center" style={navStyling}>{this.list()}</nav>
       </div>
 
       // <nav className="navbar navbar-expand-lg navbar-light"  >

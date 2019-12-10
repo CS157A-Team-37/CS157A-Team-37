@@ -19,14 +19,15 @@ export default function Routes() {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/login" component={login} />
+      <Route path="/alphabetical/:letter" component={alphabetical} />
       <Route path="/alphabetical" component={alphabetical} />
       <Route path="/category" component={category} />
       <Route path="/singleCategory/:catname" component={singleCategory} />
       <Route path="/AddWord/:catname" component={AddWord} />
       <Route path="/AddDefinition" component={AddDefinition} />
       {/*This is where the test Word/Definitions is*/}
-      <Route path="/word-definition/:word_name" component={WordList} />{" "}
-      <Route path="/alphabetical/:letter" component={alphWordList} />
+      <Route path="/word-definition/:word_name" component={WordList} />
+      
     </Switch>
   );
 }
