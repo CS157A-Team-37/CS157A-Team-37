@@ -32,8 +32,9 @@ class login extends React.Component {
                           if(data[0].password == this.state.password)
                           {
                             console.log("data username: " + data[0].username);
-                            document.cookie = "username= " + data[0].username + "; id="+ data[0].id +"; expires = Thu, 01 Jan 2022 00:00:00 GMT" + "path=/" 
-         
+                            console.log("data id: " + data[0].id);
+                            document.cookie = "username=" + data[0].username + "; id="+ data[0].id +"; expires = Thu, 01 Jan 2022 00:00:00 GMT";
+                            document.cookie = "id="+ data[0].id +"; expires = Thu, 01 Jan 2022 00:00:00 GMT";
                             this.props.history.push(`/`)
                             window.location.reload(false); 
                           }
