@@ -63,4 +63,16 @@ router.post("/users/add", function(req, res, next) {
   }
 });
 
+
+router.delete("/users/delete", function (req, res, next) {
+
+  Definition.destroy(
+    {where: {text: req.body.username} }
+  )
+  .then(function(rowsUpdated) {
+    res.json(rowsUpdated)
+  })
+  .catch(next)
+ })
+
 module.exports = router;
